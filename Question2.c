@@ -1,17 +1,20 @@
 #include <stdint.h>
 #include <stdio.h>
-//#include "tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 
 #define LED (*((volatile uint32_t *)0x400253FC))
 
-// void delay(void)
-// {
-// 	NVIC_ST_CTRL_R &= ~(0x01); //clear enable
-// 	NVIC_ST_RELOAD_R = 4000000; // set ending point
-// 	NVIC_ST_CTRL_R = 0x05; // enable counter and start counting
-// 	while((NVIC_ST_CTRL_R & 0x10000) == 0x00) {};
-// 	NVIC_ST_CTRL_R = 0; //stop timer	
-// }
+void delay(void)
+{
+    //CLEAR ENABLE
+	NVIC_ST_CTRL_R &= ~(0x01); 
+    //SPECIFY RELOAD VALUE
+	NVIC_ST_RELOAD_R = 4000000; // set ending point
+    //CLEAR
+	NVIC_ST_CTRL_R = 0x05; // enable counter and start counting
+	while((NVIC_ST_CTRL_R & 0x10000) == 0x00) {};
+	NVIC_ST_CTRL_R = 0; //stop timer	
+}
 
 // void port_F(void)
 // {

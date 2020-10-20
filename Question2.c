@@ -21,6 +21,7 @@ void initPortF1(void)
   GPIO_PORTF_PUR_R = 0x10; 
   //DIGITAL ENABLE
   GPIO_PORTF_DEN_R = 0x02; 
+  
 }
 
 
